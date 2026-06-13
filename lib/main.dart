@@ -2,20 +2,22 @@ import 'package:flutter/material.dart';
 
 import 'package:learn_flutter_68_2/screen/home.dart';
 
+import 'package:learn_flutter_68_2/screen/item.dart';
+
 void main() {
   //const app = MaterialApp(title: 'หัวข้อ', home: Text(("Hello World")));
   //runApp(app);
 
   runApp(
     MaterialApp(
-      title: "My App",
+      title: "หัวข้อ",
       home: Scaffold(
         appBar: AppBar(
-          title: const Text("Home"),
+          title: const Text("หัวข้อ"),
           backgroundColor: Colors.pinkAccent,
           centerTitle: true,
         ), // AppBar
-        body: Home(),
+        body: Item(),
       ), // Scaffold
     ), // MaterialApp
   );
