@@ -18,8 +18,8 @@ class Item extends StatefulWidget{
         itemBuilder: (context, index){
           return Container(
             decoration: BoxDecoration(
-              border: Border.all(color: Colors.purpleAccent),
               borderRadius: BorderRadius.circular(10),
+              color: people[index].job.color,
             ),
             margin: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
             padding: EdgeInsets.all(40),
@@ -33,11 +33,12 @@ class Item extends StatefulWidget{
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
                     Text("อายุ: ${people[index].age} ปี",
                     style: TextStyle(fontSize: 18),),
-                    Text("อาชีพ: ${people[index].job}",
+                    Text("อาชีพ: ${people[index].job.title}",
                     style: TextStyle(fontSize: 18),),
                   ],
                 ),
-                Icon(Icons.person, size: 50, color: Colors.purpleAccent),
+                Image.asset
+                (people[index].job.image, width: 50, height: 50, fit: BoxFit.cover,),
               ],
             ),
           );
