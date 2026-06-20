@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:learn_flutter_68_2/model/person.dart';
 
+import 'package:learn_flutter_68_2/main.dart';
+
 class AddForm extends StatefulWidget {
   const AddForm({super.key});
 
@@ -17,16 +19,14 @@ class _AddFormState extends State<AddForm> {
   
     @override
     Widget build(BuildContext context) {
-        return MaterialApp(
-            title: "Add Person",
-            home: Scaffold(
-                appBar: AppBar(
-                    title: Text("Add Person"),
-                    backgroundColor: Colors.pinkAccent,
-                    centerTitle: true,
-                ),
-                body: Padding(
-                    padding: EdgeInsets.all(20.0),
+        return Scaffold(
+        appBar: AppBar(
+          title: Text("Add Person"),
+          backgroundColor: Colors.pinkAccent,
+          centerTitle: true,
+        ),
+        body: Padding(
+          padding: EdgeInsets.all(20.0),
                     // child: Column(
                     //     children: [
                     //         TextFormField(decoration: InputDecoration(labelText: "Name")),
@@ -93,12 +93,13 @@ class _AddFormState extends State<AddForm> {
                     ),
                     DropdownButtonFormField<Job>(
                       decoration: InputDecoration(labelText: "Job"),
+                      initialValue: _job,
                       items: Job.values.map((key){
                         return DropdownMenuItem(value: key, child: Text(key.title));
                       }).toList(),
                       onChanged: (value) {
                         setState(() {
-                          _job = value!;
+                          _job = value;
                         });
                       },
                     ),
@@ -114,6 +115,11 @@ class _AddFormState extends State<AddForm> {
                           }
                           );
                           _formKey.currentState!.reset();
+
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(builder: (context) => MyApp()),
+                          );
                         }
                       },
                       style: FilledButton.styleFrom(
@@ -123,13 +129,12 @@ class _AddFormState extends State<AddForm> {
                       child: Text(
                         "Submit",
                         style: TextStyle(color: Colors.white, fontSize: 20),
-                      )
-                    )
+                      ),
+                    ),
                   ],
                 ),
                 ),
             ),
-            ),
-         );
+            );   
     }
 }
